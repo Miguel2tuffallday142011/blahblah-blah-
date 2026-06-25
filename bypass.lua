@@ -1659,3 +1659,6 @@ function PrimordialUI:CreateWindow(config)
 end -- CreateWindow
 
 return PrimordialUI
+
+                    return Section
+                end -- AddSection
