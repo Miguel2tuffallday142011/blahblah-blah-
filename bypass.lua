@@ -12,8 +12,7 @@ local Theme = {
     BGSecondary = Color3.fromRGB(28, 28, 28),
     BGTertiary  = Color3.fromRGB(32, 32, 32),
     BGItem      = Color3.fromRGB(38, 38, 38),
-    Accent      = Color3.fromRGB(204, 70, 90),
-    AccentDim   = Color3.fromRGB(160, 50, 50),
+    Accent      = Color3.fromRGB(204, 70, 90),    AccentDim   = Color3.fromRGB(160, 50, 50),
     TextPrimary = Color3.fromRGB(255, 255, 255),
     TextSecond  = Color3.fromRGB(160, 160, 160),
     TextDim     = Color3.fromRGB(100, 100, 100),
@@ -163,10 +162,10 @@ function PrimordialUI:CreateWindow(config)
 
     local titleLabel = MakeLabel(header,
         title,
-        UDim2.fromOffset(300, 28),
+        UDim2.fromOffset(200, 28),
         UDim2.fromOffset(14, 11),
-        Theme.Accent,
-        Enum.Font.Gotham, 22)
+        Theme.TextPrimary,
+        Enum.Font.GothamBold, 20)
     titleLabel.TextXAlignment = Enum.TextXAlignment.Left
 
     -- Separator line under header
@@ -1444,6 +1443,7 @@ function PrimordialUI:CreateWindow(config)
                             table.insert(pickers, CP)
                         end
 
+
                         return pickers
                     end
 
@@ -1536,7 +1536,7 @@ function PrimordialUI:CreateWindow(config)
         Theme.Accent = color
         Theme.SliderFill = color
         -- Update title color
-        titleLabel.TextColor3 = color        -- Recursively update all accent-colored elements
+        if titleLabel then titleLabel.TextColor3 = color end        -- Recursively update all accent-colored elements
         local function updateDescendants(parent)
             for _, obj in ipairs(parent:GetDescendants()) do
                 if obj.Name == "Fill" and obj:IsA("Frame") then
